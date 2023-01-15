@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { JsondbInitialAccService } from 'src/app/services/jsondb-initial-acc.service';
+import { IAccount } from 'src/app/services/models';
 
 @Component({
   selector: 'app-acc-list',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccListComponent implements OnInit {
 
-  constructor() { }
+  accountingAccounts: Array<IAccount[]>;
+
+  constructor(private accService:JsondbInitialAccService) { 
+    this.accountingAccounts = this.accService.getAllAccounts();
+  }
 
   ngOnInit(): void {
+    console.log(this.accountingAccounts[0]);
+    console.log(this.accountingAccounts[1]);
+    console.log(this.accountingAccounts[2]);
+    console.log(this.accountingAccounts[3]);
+    console.log(this.accountingAccounts[4]);
   }
 
 }

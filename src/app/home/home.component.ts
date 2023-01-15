@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   accountingAccounts: Array<IAccount[]>;
 
   constructor(private accService:JsondbInitialAccService) { 
-    this.accountingAccounts = accService.getAllAccounts();
+    this.accountingAccounts = this.accService.getAllAccounts();
   }
 
   ngOnInit(): void {
