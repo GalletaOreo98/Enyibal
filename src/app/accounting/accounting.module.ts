@@ -7,7 +7,7 @@ import { AccListComponent } from './pages/acc-list/acc-list.component';
 
 @NgModule({
   declarations: [
-    AccListComponent
+    AccListComponent,
   ],
   imports: [
     CommonModule,
