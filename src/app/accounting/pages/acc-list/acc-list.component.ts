@@ -16,11 +16,6 @@ export class AccListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.accountingAccounts[0]);
-    console.log(this.accountingAccounts[1]);
-    console.log(this.accountingAccounts[2]);
-    console.log(this.accountingAccounts[3]);
-    console.log(this.accountingAccounts[4]);
   }
 
   getChildrenAccounts(id: number): IAccount[] {

@@ -1,40 +1,46 @@
-<ngb-accordion [closeOthers]="true">
-    <ngb-panel *ngFor="let acc of accountingAccounts[0]">
-        <ng-template ngbPanelTitle>
-            <h2>{{acc.idAccountingAccount}}. <b>{{acc.name}}</b> ({{acc.code}})</h2>
-        </ng-template>
-        <ng-template ngbPanelContent>
-            <ngb-accordion [closeOthers]="true" *ngIf="acc.idAccountingAccount!=122">
-                <ngb-panel *ngFor="let subAcc of getChildrenAccounts(acc.idAccountingAccount)">
-                    <ng-template ngbPanelTitle>
-                        <h3>{{subAcc.idAccountingAccount}}. <b>{{subAcc.name}}</b> ({{subAcc.code}})</h3>
-                    </ng-template>
-                    <ng-template ngbPanelContent>
-                        <ngb-accordion [closeOthers]="true">
-                            <ngb-panel *ngFor="let subAcc3 of getChildrenAccounts2(subAcc.idAccountingAccount, 2)">
-                                <ng-template ngbPanelTitle>
-                                    <h4>{{subAcc3.idAccountingAccount}}. <b>{{subAcc3.name}}</b> ({{subAcc3.code}})</h4>
-                                </ng-template>
-                                <ng-template ngbPanelContent>
-                                    <ul *ngFor="let subAcc4 of getChildrenAccounts2(subAcc3.idAccountingAccount, 3)">
-                                        <li ngbPanelTitle>
-                                            <h5>{{subAcc4.idAccountingAccount}}. <b>{{subAcc4.name}}</b>
-                                                ({{subAcc4.code}})</h5>
-                                        </li>
-                                    </ul>
-                                </ng-template>
-                            </ngb-panel>
-                        </ngb-accordion>
-                    </ng-template>
-                </ngb-panel>
-            </ngb-accordion>
-            <ul *ngIf="acc.idAccountingAccount==122">
-                <li ngbPanelTitle *ngFor="let subAcc4 of getChildrenAccounts(acc.idAccountingAccount)">
-                    <h5>
-                        {{subAcc4.idAccountingAccount}}. <b>{{subAcc4.name}}</b>({{subAcc4.code}})
-                    </h5>
-                </li>
-            </ul>
-        </ng-template>
-    </ngb-panel>
-</ngb-accordion>
+<div class="mx-2 my-2">
+    <ngb-accordion [closeOthers]="true">
+        <ngb-panel *ngFor="let acc of accountingAccounts[0]">
+            <ng-template ngbPanelTitle>
+                <h3>{{acc.idAccountingAccount}}. <b>{{acc.name}}</b> ({{acc.code}})</h3>
+            </ng-template>
+            <ng-template ngbPanelContent>
+                <ngb-accordion [closeOthers]="true" *ngIf="acc.idAccountingAccount!=122">
+                    <ngb-panel *ngFor="let subAcc of getChildrenAccounts(acc.idAccountingAccount)">
+                        <ng-template ngbPanelTitle>
+                            <h4>{{subAcc.idAccountingAccount}}. <b>{{subAcc.name}}</b> ({{subAcc.code}})</h4>
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                            <ngb-accordion [closeOthers]="true">
+                                <ngb-panel *ngFor="let subAcc3 of getChildrenAccounts2(subAcc.idAccountingAccount, 2)">
+                                    <ng-template ngbPanelTitle>
+                                        <h5>{{subAcc3.idAccountingAccount}}. <b>{{subAcc3.name}}</b> ({{subAcc3.code}})
+                                        </h5>
+                                    </ng-template>
+                                    <ng-template ngbPanelContent>
+                                        <ul
+                                            *ngFor="let subAcc4 of getChildrenAccounts2(subAcc3.idAccountingAccount, 3)">
+                                            <li ngbPanelTitle>
+                                                <h6>
+                                                    {{subAcc4.idAccountingAccount}}. <b>{{subAcc4.name}}</b>
+                                                    ({{subAcc4.code}})
+                                                </h6>
+                                            </li>
+                                        </ul>
+                                    </ng-template>
+                                </ngb-panel>
+                            </ngb-accordion>
+                        </ng-template>
+                    </ngb-panel>
+                </ngb-accordion>
+                <ul *ngIf="acc.idAccountingAccount==122">
+                    <li ngbPanelTitle *ngFor="let subAcc4 of getChildrenAccounts(acc.idAccountingAccount)">
+                        <h6>
+                            {{subAcc4.idAccountingAccount}}. <b>{{subAcc4.name}}</b>({{subAcc4.code}})
+                        </h6>
+                    </li>
+                </ul>
+            </ng-template>
+        </ngb-panel>
+    </ngb-accordion>
+</div>
