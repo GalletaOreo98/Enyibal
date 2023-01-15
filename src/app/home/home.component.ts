@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { JsondbInitialAccService } from '../services/jsondb-initial-acc.service';
-import { IAccount } from '../services/models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,18 +8,17 @@ import { IAccount } from '../services/models';
 })
 export class HomeComponent implements OnInit {
 
-  accountingAccounts: Array<IAccount[]>;
+  
 
-  constructor(private accService:JsondbInitialAccService) { 
-    this.accountingAccounts = this.accService.getAllAccounts();
+  constructor(private router:Router) { 
+    
   }
 
   ngOnInit(): void {
-    console.log(this.accountingAccounts[0]);
-    console.log(this.accountingAccounts[1]);
-    console.log(this.accountingAccounts[2]);
-    console.log(this.accountingAccounts[3]);
-    console.log(this.accountingAccounts[4]);
+  }
+
+  goToAccList() {
+    this.router.navigate(['accounting/acc-list']); 
   }
 
 }
