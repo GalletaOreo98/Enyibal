@@ -23,4 +23,13 @@ export class AccListComponent implements OnInit {
     console.log(this.accountingAccounts[4]);
   }
 
+  getChildrenAccounts(id: number): IAccount[] {
+    if (id == 122) return this.accountingAccounts[4].filter(e => e.AccountingAccount === id); //Estado de resultados
+    return this.accountingAccounts[1].filter(e => e.AccountingAccount === id);
+  }
+
+  getChildrenAccounts2(id: number, order: number): IAccount[] {
+    return this.accountingAccounts[order].filter(e => e.AccountingAccount === id);
+  }
+
 }
