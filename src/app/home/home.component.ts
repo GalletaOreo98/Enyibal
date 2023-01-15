@@ -9,26 +9,18 @@ import { IAccount } from '../services/models';
 })
 export class HomeComponent implements OnInit {
 
-  firstOrderAccounts:IAccount[] | undefined;
-  secondOrderAccounts:IAccount[] | undefined;
-  thirdOrderAccounts:IAccount[] | undefined;
-  fourthOrderAccounts:IAccount[] | undefined;
-  fifthOrderAccounts:IAccount[] | undefined;
+  accountingAccounts: Array<IAccount[]>;
 
   constructor(private accService:JsondbInitialAccService) { 
-    this.firstOrderAccounts = this.accService.getFirstOrderAccounts();
-    this.secondOrderAccounts = this.accService.getSecondOrderAccounts();
-    this.thirdOrderAccounts = this.accService.getExtraOrdersAccounts(this.secondOrderAccounts);
-    this.fourthOrderAccounts = this.accService.getExtraOrdersAccounts(this.thirdOrderAccounts);
-    this.fifthOrderAccounts = this.accService.getIncomeStatementAccounts();
+    this.accountingAccounts = accService.getAllAccounts();
   }
 
   ngOnInit(): void {
-    console.log(this.firstOrderAccounts);
-    console.log(this.secondOrderAccounts);
-    console.log(this.thirdOrderAccounts);
-    console.log(this.fourthOrderAccounts);
-    console.log(this.fifthOrderAccounts);
+    console.log(this.accountingAccounts[0]);
+    console.log(this.accountingAccounts[1]);
+    console.log(this.accountingAccounts[2]);
+    console.log(this.accountingAccounts[3]);
+    console.log(this.accountingAccounts[4]);
   }
 
 }

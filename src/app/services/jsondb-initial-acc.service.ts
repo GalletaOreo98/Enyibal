@@ -811,23 +811,65 @@ export class JsondbInitialAccService {
       "name": "Otros ingresos",
       "AccountingAccount": 122
     }
-  ]
+  ];
 
-  constructor() { }
+  private firstOrderAccounts: IAccount[]; // Activo, Pasivo, Patrimoni, Estado de resultados
+  private secondOrderAccounts: IAccount[]; // Activo corriente, no corriente; Pasivo corriente, etc...
+  private thirdOrderAccounts: IAccount[]; // Cuentas por pagar, Propiedad planta y equipo, etc...
+  private fourthOrderAccounts: IAccount[]; // Caja, Caja chica Bancos, Vehiculos, Intereses por pagar, etc...
+  private fifthOrderAccounts: IAccount[]; // Cuentas de Estado de resultados: Ventas, compras, Utilidad neta, etc...
+
+  constructor() {
+    this.firstOrderAccounts = this.getFirstOrderAccountsL();
+    this.secondOrderAccounts = this.getSecondOrderAccountsL();
+    this.thirdOrderAccounts = this.getExtraOrdersAccountsL(this.secondOrderAccounts);
+    this.fourthOrderAccounts = this.getExtraOrdersAccountsL(this.thirdOrderAccounts);
+    this.fifthOrderAccounts = this.getIncomeStatementAccountsL();
+  }
 
   getFirstOrderAccounts(): IAccount[] {
-    return this.accounts.filter(e => e.AccountingAccount === 0);
+    return this.firstOrderAccounts;
   }
 
   getSecondOrderAccounts(): IAccount[] {
+    return this.secondOrderAccounts;
+  }
+
+  getThirdOrderAccounts(): IAccount[] {
+    return this.thirdOrderAccounts;
+  }
+
+  getFourthOrderAccounts(): IAccount[] {
+    return this.fourthOrderAccounts;
+  }
+
+  getFifthOrderAccounts(): IAccount[] {
+    return this.fifthOrderAccounts;
+  }
+
+  getAllAccounts(): Array<IAccount[]> {
+    return [
+      this.firstOrderAccounts,
+      this.secondOrderAccounts,
+      this.thirdOrderAccounts,
+      this.fourthOrderAccounts,
+      this.fifthOrderAccounts
+    ]
+  }
+
+  private getFirstOrderAccountsL(): IAccount[] {
+    return this.accounts.filter(e => e.AccountingAccount === 0);
+  }
+
+  private getSecondOrderAccountsL(): IAccount[] {
     return this.accounts.filter(e => e.AccountingAccount === 1 || e.AccountingAccount === 2 || e.AccountingAccount === 3);
   }
 
-  getExtraOrdersAccounts(array1: IAccount[]): IAccount[] {
+  private getExtraOrdersAccountsL(array1: IAccount[]): IAccount[] {
     return this.filterArray(array1, this.accounts);
   }
 
-  getIncomeStatementAccounts(): IAccount[]{
+  private getIncomeStatementAccountsL(): IAccount[] {
     return this.accounts.filter(e => e.AccountingAccount === 122);
   }
 
@@ -838,6 +880,5 @@ export class JsondbInitialAccService {
       });
     });
   }
-
 
 }
