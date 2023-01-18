@@ -21,4 +21,8 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['accounting/acc-list']); 
   }
 
+  goToAccJournal() {
+    this.router.navigate(['accounting/acc-journal']);
+  }
+
 }
