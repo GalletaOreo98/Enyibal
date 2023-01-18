@@ -17,12 +17,4 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  goToAccList() {
-    this.router.navigate(['accounting/acc-list']); 
-  }
-
-  goToAccJournal() {
-    this.router.navigate(['accounting/acc-journal']);
-  }
-
 }

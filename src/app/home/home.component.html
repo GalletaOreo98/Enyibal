@@ -1,8 +1,14 @@
 
-<header><h1>Bienvenido a Enyibal</h1></header>
+<header class="d-flex justify-content-center my-4 text-white"><h1>¡Bienvenido a Enyibal!</h1></header>
 
-<button class="btn btn-info" (click)="goToAccList()">Ir a la lista de cuentas</button>
-<button class="btn btn-info" (click)="goToAccJournal()">Ir a la Libro Diario</button>
+<div class="d-flex justify-content-center align-items-center">
+    <button class="btn btn-primary mx-2" [routerLink]="['accounting/acc-list']">
+        Ir a la lista de cuentas
+    </button>
+    <button class="btn btn-primary mx-2" [routerLink]="['accounting/acc-journal']">
+        Ir a la Libro Diario
+    </button>
+</div>
 
 
 
